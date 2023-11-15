@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("New Scene 1");
+            SceneManager.LoadScene("Lv.1");
         }
 
 
