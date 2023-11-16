@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459d5af93c79c804bb744860ab74b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1400
+  force: 1700
   forceDirection: {x: 0, y: 0, z: 1}
   buttonName: Fire2
   offset: {x: 0, y: 0, z: 0}

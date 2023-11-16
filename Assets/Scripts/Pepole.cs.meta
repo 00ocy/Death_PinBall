@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8940b499e7fbe0a4f94c68c0d18e2608
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gm: {instanceID: 0}
+  - f_screamSound: {fileID: 8300000, guid: eb25007d50d618345ac8f74b8c9a8a0c, type: 3}
+  - m_screamSound: {fileID: 8300000, guid: b179ae5a0302e58458e48c7d469df497, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
