@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class enemyAIPatrol : MonoBehaviour
 {
-    GameObject player;
+    
     Animator animator;
     NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
@@ -39,32 +39,32 @@ public class enemyAIPatrol : MonoBehaviour
         lastPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        player = GameObject.Find("Player");
+        
     }
 
     void Update()
     {
-        if (animator.GetBool("walk") || animator.GetBool("run"))
-        {
-            // 현재 포지션 저장
-            Vector3 currentPosition = transform.position;
-
-            // 이전 프레임의 포지션과 비교
-            if (Mathf.Approximately(currentPosition.x, lastPosition.x) && Mathf.Approximately(currentPosition.z, lastPosition.z))
-            {
-                walkpointSet = false;
-            }
-            else
-            {
-                // 변화가 있으면 walk 또는 run 값을 유지
-            }
-
-            // 현재 프레임의 포지션을 이전 포지션에 저장
-            lastPosition = currentPosition;
-        }
-
         if (!death)
         {
+            if (animator.GetBool("walk") || animator.GetBool("run"))
+            {
+                // 현재 포지션 저장
+                Vector3 currentPosition = transform.position;
+
+                // 이전 프레임의 포지션과 비교
+                if (Mathf.Approximately(currentPosition.x, lastPosition.x) && Mathf.Approximately(currentPosition.z, lastPosition.z))
+                {
+                    walkpointSet = false;
+                }
+                else
+                {
+                    // 변화가 있으면 walk 또는 run 값을 유지
+                }
+
+                // 현재 프레임의 포지션을 이전 포지션에 저장
+                lastPosition = currentPosition;
+            }
+
             if (!domang)
             {
                 playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
@@ -105,13 +105,15 @@ public class enemyAIPatrol : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
+            GameManager GM = GameManager.instance;
             animator.SetBool("death", true);
             agent.speed = 0;
             death = true;
             gameObject.layer = LayerMask.NameToLayer("Player");
-            //피 때문에 일단 고민
             GetComponent<Collider>().isTrigger = true;
+            GM.score += 100;
         }
+
     }
     void Patrol()
     {
