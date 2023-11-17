@@ -6,7 +6,7 @@ public class Pepole : MonoBehaviour
 {
     
     Animator animator;
-
+    
     NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
     
@@ -118,6 +118,7 @@ public class Pepole : MonoBehaviour
         {
             animator.SetBool("death", true);
             agent.speed = 0;
+            agent.enabled = false;
             death = true;
             gameObject.layer = LayerMask.NameToLayer("Player");
             GetComponent<Collider>().isTrigger = true;

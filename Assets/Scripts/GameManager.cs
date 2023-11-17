@@ -16,13 +16,17 @@ public class GameManager : MonoBehaviour
 { 
     public GameState gs;
 
+    public GameObject black;
+
+
     public AudioClip readySound;
     public AudioClip goSound;
 
     public int score;
-
     public Text scoreText;
 
+    public int life;
+    public Text lifeText;
     // 게임오버용
     //public GameObject black;
     //public Text endScoreText;
@@ -34,10 +38,11 @@ public class GameManager : MonoBehaviour
     {
 
         scoreText.text = "0";
+        lifeText.text = "LIFE : 3";
         score = 0;
+        life = 3;
     }
-    //게임오버용
- /*   void GameOver()
+    /*void GameOver()
     {
         gs = GameState.End;
         iTween.FadeTo(black, iTween.Hash("alpha", 180, "delay", 0.1f, "time", 0.5f));
@@ -52,7 +57,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         scoreText.text = ""+score.ToString();
-
+        lifeText.text = "LIFE : "+life.ToString();
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
