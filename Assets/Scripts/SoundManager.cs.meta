@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: f87be59900a83db419185691e4cf8b2d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Efx_Source: {instanceID: 0}
+  - ball_1Sound: {fileID: 8300000, guid: 584d1245257d9e44a9f4fe7cdf5ae7c2, type: 3}
+  - ball_2Sound: {fileID: 8300000, guid: b9c382bd8cec91840a457f1b7a995022, type: 3}
+  - ball_3Sound: {fileID: 8300000, guid: 913d5440bfff1bb409606d31d5724340, type: 3}
+  - ball_4Sound: {instanceID: 0}
+  - heatSound: {instanceID: 0}
+  - wrongeatSound: {instanceID: 0}
+  - trashSound: {instanceID: 0}
+  - wrongSound: {instanceID: 0}
+  - f_screamSound: {fileID: 8300000, guid: eb25007d50d618345ac8f74b8c9a8a0c, type: 3}
+  - m_screamSound: {fileID: 8300000, guid: b179ae5a0302e58458e48c7d469df497, type: 3}
+  - flipperUpSound: {fileID: 8300000, guid: 977cb15fc6c15b9449f1a3a77c32ce15, type: 3}
+  - flipperDownSound: {fileID: 8300000, guid: 0b7b06b2c8570d84391bd9bb28dac22d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

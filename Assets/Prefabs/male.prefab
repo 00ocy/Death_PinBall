@@ -236,10 +236,10 @@ GameObject:
   - component: {fileID: 6090268101836355010}
   - component: {fileID: 551266660069016202}
   - component: {fileID: 4237097043545253105}
-  - component: {fileID: -4205454272648812562}
+  - component: {fileID: -7357455559611323108}
   m_Layer: 0
   m_Name: male
-  m_TagString: Untagged
+  m_TagString: m
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,8 +323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gm: {fileID: 0}
-  f_screamSound: {fileID: 0}
-  m_screamSound: {fileID: 0}
+  Scream_Source: {fileID: 0}
   range: 11
   sightRange: 10
   bugTime: 0
@@ -352,7 +351,7 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!82 &-4205454272648812562
+--- !u!82 &-7357455559611323108
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

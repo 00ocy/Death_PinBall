@@ -12,9 +12,7 @@ public class Pepole : MonoBehaviour
     
     public GameManager gm;
 
-    AudioSource m_audioSource;
-    public AudioClip f_screamSound;
-    public AudioClip m_screamSound;
+    public AudioSource Scream_Source;
     
     //patrol
     Vector3 destPoint;
@@ -23,7 +21,7 @@ public class Pepole : MonoBehaviour
 
     //state change
     [SerializeField] float sightRange;
-    bool playerInSight;
+    bool CorpseInSight;
 
     public float bugTime;
     private Vector3 lastPosition;  // 이전 프레임의 포지션을 저장하기 위한 변수
@@ -32,28 +30,27 @@ public class Pepole : MonoBehaviour
     bool death = false;
     bool domang = false;
 
-    void PlaySound(AudioClip ac)
+    void Scream_Sound(AudioClip ac)
     {
-        m_audioSource.clip = ac;
-        m_audioSource.Play();
+        Scream_Source.clip = ac;
+        Scream_Source.Play();
     }
   
-    void Chase()
+    void Find_corpse()
     {
-        if (gameObject.CompareTag("m")) PlaySound(m_screamSound);
-        else PlaySound(f_screamSound);
+        if (gameObject.CompareTag("m")) Scream_Sound(SoundManager.instance.m_screamSound);
+        else Scream_Sound(SoundManager.instance.f_screamSound);
         domang = true;
     }
 
 
     void Start()
     {
-
         lastPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         gm = GameObject.Find("GM").GetComponent<GameManager>();
-        m_audioSource = GetComponent<AudioSource>();
+        Scream_Source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -81,7 +78,7 @@ public class Pepole : MonoBehaviour
 
             if (!domang)
             {
-                playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
+                CorpseInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
 
                 if (agent.speed > 0.5f)
                 {
@@ -93,7 +90,7 @@ public class Pepole : MonoBehaviour
                 }
 
                 Patrol();
-                if (playerInSight) Chase();
+                if (CorpseInSight) Find_corpse();
 
                 bugTime += Time.deltaTime;
                 if (bugTime >= 8)
@@ -119,7 +116,6 @@ public class Pepole : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            
             animator.SetBool("death", true);
             agent.speed = 0;
             death = true;

@@ -29,25 +29,10 @@ public class GameManager : MonoBehaviour
     //public Text highScoreText;
     //public GameObject finalWindow;
 
-    AudioSource m_audioSource;
-
-    void PlaySound(AudioClip ac)
-    {
-        m_audioSource.clip = ac;
-        m_audioSource.Play();
-    }
-
-    public void Go()
-    {
-        gs = GameState.Play;
-        PlaySound(goSound);
-    }
-
+ 
     void Start()
     {
 
-        m_audioSource = GetComponent<AudioSource>();
-        PlaySound(readySound);
         scoreText.text = "0";
         score = 0;
     }
@@ -70,7 +55,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("Lv.1");
+            SceneManager.LoadScene(0);
         }
 
         if (gs == GameState.Play)

@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1290664939806836593}
   - component: {fileID: 4722880562114553290}
   - component: {fileID: 2644190205319675026}
-  - component: {fileID: -3877818357525158502}
+  - component: {fileID: -3919619092097960033}
   m_Layer: 0
   m_Name: female
   m_TagString: Untagged
@@ -325,8 +325,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gm: {fileID: 0}
-  f_screamSound: {fileID: 0}
-  m_screamSound: {fileID: 0}
+  Scream_Source: {fileID: 0}
   range: 11
   sightRange: 10
   bugTime: 0
@@ -354,7 +353,7 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!82 &-3877818357525158502
+--- !u!82 &-3919619092097960033
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -8,6 +8,9 @@ TagManager:
   - death
   - BusStopPole
   - m
+  - Lamp
+  - PowerPole
+  - Car
   layers:
   - Default
   - TransparentFX
