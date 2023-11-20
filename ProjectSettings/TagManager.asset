@@ -12,6 +12,9 @@ TagManager:
   - PowerPole
   - Car
   - f
+  - trash
+  - parking
+  - h
   layers:
   - Default
   - TransparentFX

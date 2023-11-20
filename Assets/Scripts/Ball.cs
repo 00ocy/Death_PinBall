@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     // ´ê¾ÒÀ»¶§ ³¯ ¼Ò¸® (Æ½, ÅÎ, ÆÃ~, ÆÜ, ±ø~)
     public AudioSource[] Ball_Source;
-    
+   
 
     void Start()
     {
@@ -32,6 +32,16 @@ public class Ball : MonoBehaviour
         Ball_Source[3].clip = clip;
         Ball_Source[3].Play();
     }
+    public void parking(AudioClip clip)
+    {
+        Ball_Source[4].clip = clip;
+        Ball_Source[4].Play();
+    }
+    public void trash(AudioClip clip)
+    {
+        Ball_Source[5].clip = clip;
+        Ball_Source[5].Play();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -51,10 +61,18 @@ public class Ball : MonoBehaviour
         {
             Carsound(SoundManager.instance.bbang);
         }
-       /* else if (collision.gameObject.CompareTag("f") || collision.gameObject.CompareTag("m"))
+        else if (collision.gameObject.CompareTag("f") || collision.gameObject.CompareTag("m"))
         {
             person(SoundManager.instance.personHit);
-        }*/
+        }
+        else if (collision.gameObject.CompareTag("parking") || collision.gameObject.CompareTag("h"))
+        {
+            parking(SoundManager.instance.parking);
+        }
+        else if (collision.gameObject.CompareTag("trash"))
+        {
+            trash(SoundManager.instance.trash);
+        }
 
     }
     

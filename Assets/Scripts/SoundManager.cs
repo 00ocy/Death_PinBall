@@ -5,18 +5,16 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
-   
-    
-    // 자동차 사이렌, 버스정류장 3번
-    
-  
+
     // 공 부딪힐때
     public AudioClip lamp;
     public AudioClip metal;
     public AudioClip bbang;
     public AudioClip personHit;
-    //public AudioClip BusstopHit;
+    public AudioClip parking;
+    public AudioClip trash;
     
+
 
     // 시체 발견 비명
     public AudioClip f_screamSound;
