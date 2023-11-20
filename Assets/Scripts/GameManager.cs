@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshPro space;
     public GameObject Ball;
     // 게임오버용
+    private bool gameIsOver = false;
     public GameObject black;
     public GameObject finalWindow;
     public TextMeshPro endScoreText;
@@ -50,21 +51,33 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
-        gs = GameState.End;
-        // 캐릭터 생성 멈추기 추가
-        // 플립퍼 동작 멈추기 추가
+        if (!gameIsOver)
+        {
+            gameIsOver = true;
+            gs = GameState.End;
+            // 캐릭터 생성 멈추기 추가
+            // 플립퍼 동작 멈추기 추가
 
-        iTween.FadeTo(black, iTween.Hash("alpha", 180, "delay", 0.1f, "time", 0.5f));
-        iTween.MoveTo(finalWindow, iTween.Hash("y", 0, "delay", 0.5f, "time", 1f));
+            iTween.FadeTo(black, iTween.Hash("alpha", 180, "delay", 0.1f, "time", 0.5f));
+            iTween.MoveTo(finalWindow, iTween.Hash("y", 0, "delay", 0.5f, "time", 1f));
 
-        GameOverCanvas.gameObject.SetActive(true);
-        LeanTween.alpha(buttonImageHome.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
-        LeanTween.alpha(buttonImageRe.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
+            GameOverCanvas.gameObject.SetActive(true);
+            LeanTween.alpha(buttonImageHome.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
+            LeanTween.alpha(buttonImageRe.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
 
-        if (score > PlayerPrefs.GetInt("hs")) PlayerPrefs.SetInt("hs", score);
+            if (score > PlayerPrefs.GetInt("hs")) PlayerPrefs.SetInt("hs", score);
 
-        endScoreText.text = score.ToString();
-        highScoreText.text = PlayerPrefs.GetInt("hs").ToString();
+            endScoreText.text = score.ToString();
+            highScoreText.text = PlayerPrefs.GetInt("hs").ToString();
+        }
+    }
+    public void Click_Home()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void Click_RePlay()
+    {
+        SceneManager.LoadScene(2);
     }
 
     void Update()
@@ -75,7 +88,7 @@ public class GameManager : MonoBehaviour
         //게임오버 다시하기 버튼으로 빼기 나중에
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -107,10 +120,6 @@ public class GameManager : MonoBehaviour
         //}
     }
 
-    void GoHome()
-    {
-
-    }
 
 }
 

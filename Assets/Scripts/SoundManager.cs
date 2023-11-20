@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip parking;
     public AudioClip trash;
     
+    // 경찰차
+    public AudioClip siren;
 
 
     // 시체 발견 비명
