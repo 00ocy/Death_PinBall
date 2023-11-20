@@ -5,35 +5,56 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     // ´ê¾ÒÀ»¶§ ³¯ ¼Ò¸® (Æ½, ÅÎ, ÆÃ~, ÆÜ, ±ø~)
-    public AudioSource Ball_Source;
+    public AudioSource[] Ball_Source;
+    
 
     void Start()
     {
-        Ball_Source = GetComponent<AudioSource>();
+        AudioSource[] Ball_Source = GetComponents<AudioSource>();
     }
     public void BallSound(AudioClip clip)
     {
-        Ball_Source.clip = clip;
-        Ball_Source.Play();
+        Ball_Source[0].clip = clip;
+        Ball_Source[0].Play();
     }
+    public void Pole(AudioClip clip)
+    {
+        Ball_Source[1].clip = clip;
+        Ball_Source[1].Play();
+    }
+    public void Carsound(AudioClip clip)
+    {
+        Ball_Source[2].clip = clip;
+        Ball_Source[2].Play();
+    }
+    public void person(AudioClip clip)
+    {
+        Ball_Source[3].clip = clip;
+        Ball_Source[3].Play();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // ¼Ò¸® Ã£¾Æ¿Í¾ß µÊ
         // Àüµî ÄÑÁö´Â ¼Ò¸®
         if (collision.gameObject.CompareTag("Lamp"))
         {
-            BallSound(SoundManager.instance.ball_1Sound);
+            BallSound(SoundManager.instance.lamp);
         }
         // Àüº¿´ë¿¡ ºÎµúÈ÷´Â µíÇÑ ¼Ò¸®.. ÅÖ? ÅÍ¾û?
         else if (collision.gameObject.CompareTag("PowerPole"))
         {
-            BallSound(SoundManager.instance.ball_2Sound);
+            Pole(SoundManager.instance.metal);
         }
         // Â÷¶û ºÎµúÈ÷´Â ¼Ò¸®
         else if (collision.gameObject.CompareTag("Car"))
         {
-            BallSound(SoundManager.instance.ball_3Sound);
+            Carsound(SoundManager.instance.bbang);
         }
+       /* else if (collision.gameObject.CompareTag("f") || collision.gameObject.CompareTag("m"))
+        {
+            person(SoundManager.instance.personHit);
+        }*/
 
     }
     

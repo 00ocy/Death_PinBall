@@ -8,21 +8,15 @@ public class SoundManager : MonoBehaviour
    
     
     // 자동차 사이렌, 버스정류장 3번
-    public AudioSource Efx_Source;
+    
   
     // 공 부딪힐때
-    public AudioClip ball_1Sound;
-    public AudioClip ball_2Sound;
-    public AudioClip ball_3Sound;
-    public AudioClip ball_4Sound;
+    public AudioClip lamp;
+    public AudioClip metal;
+    public AudioClip bbang;
+    public AudioClip personHit;
+    //public AudioClip BusstopHit;
     
-    
-    public AudioClip heatSound;
-    public AudioClip wrongeatSound;
-
-
-    public AudioClip trashSound;
-    public AudioClip wrongSound;
 
     // 시체 발견 비명
     public AudioClip f_screamSound;
@@ -38,9 +32,5 @@ public class SoundManager : MonoBehaviour
     }
    
  
-    public void EfxSound(AudioClip clip)
-    {
-        Efx_Source.clip = clip;
-        Efx_Source.Play();
-    }
+    
 }
