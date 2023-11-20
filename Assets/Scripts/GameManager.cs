@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
 public enum GameState
 {
     Ready,
@@ -23,7 +22,9 @@ public class GameManager : MonoBehaviour
     public GameObject finalWindow;
     public TextMeshPro endScoreText;
     public TextMeshPro highScoreText;
-
+    public Canvas GameOverCanvas;
+    public Image buttonImageHome;
+    public Image buttonImageRe;
     public bool Stop = false;
     // Stop ¿µÇâ DeathZone, ObjectSpawner
     
@@ -56,6 +57,10 @@ public class GameManager : MonoBehaviour
         iTween.FadeTo(black, iTween.Hash("alpha", 180, "delay", 0.1f, "time", 0.5f));
         iTween.MoveTo(finalWindow, iTween.Hash("y", 0, "delay", 0.5f, "time", 1f));
 
+        GameOverCanvas.gameObject.SetActive(true);
+        LeanTween.alpha(buttonImageHome.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
+        LeanTween.alpha(buttonImageRe.rectTransform, 1f, 1.5f).setEase(LeanTweenType.easeOutQuad).setDelay(1f);
+
         if (score > PlayerPrefs.GetInt("hs")) PlayerPrefs.SetInt("hs", score);
 
         endScoreText.text = score.ToString();
@@ -83,6 +88,11 @@ public class GameManager : MonoBehaviour
         if (Stop&&life!=0)
         {
             space.gameObject.SetActive(true);
+            
+            //±ôºý±ôºý
+            //iTween.FadeTo(space.gameObject, iTween.Hash("alpha", 0f, "time", 1f, "easetype", iTween.EaseType.easeInOutQuad));
+            //iTween.FadeTo(space.gameObject, iTween.Hash("alpha", 1f, "time", 1f, "easetype", iTween.EaseType.easeInOutQuad));
+
         }
         //if (gs == GameState.Play)
         //{
@@ -97,6 +107,10 @@ public class GameManager : MonoBehaviour
         //}
     }
 
+    void GoHome()
+    {
+
+    }
 
 }
 
