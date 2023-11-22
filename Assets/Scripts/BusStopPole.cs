@@ -7,7 +7,7 @@ public class BusStopPole : MonoBehaviour
     private MeshCollider meshCollider;
     private GameObject[] poles;
 
-    public GameManager gm;
+  //  public GameManager gm;
     void Start()
     {
         // MeshRenderer와 MeshCollider 컴포넌트를 가져옴
@@ -16,7 +16,7 @@ public class BusStopPole : MonoBehaviour
 
         // Scene에서 모든 "pole" 태그를 가진 GameObject들을 찾아 배열에 저장
         poles = GameObject.FindGameObjectsWithTag("BusStopPole");
-        gm = GameObject.Find("GM").GetComponent<GameManager>();
+       // gm = GameObject.Find("GM").GetComponent<GameManager>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -27,11 +27,11 @@ public class BusStopPole : MonoBehaviour
             meshRenderer.enabled = false;
             meshCollider.enabled = false;
 
-            gm.score += 150;
+            GameManager.instance.score += 150;
             // 모든 "pole"이 비활성화 상태인지 체크
             if (AllPolesInactive())
             {
-                gm.score += 500;
+                GameManager.instance.score += 500;
                 // 1.5초 후에 모든 "pole"을 활성화하는 코루틴 시작
                 StartCoroutine(ActivateAllPolesAfterDelay(1.5f));
             }

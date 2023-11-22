@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameManager gm;
+    //public GameManager gm;
 
     public GameObject prefabToSpawn;
     public Transform spawnPoint;
@@ -15,7 +15,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        gm = GameObject.Find("GM").GetComponent<GameManager>();
+        //gm = GameObject.Find("GM").GetComponent<GameManager>();
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class ObjectSpawner : MonoBehaviour
         // 일정 간격마다 프리팹 생성
         if (timeSinceLastSpawn >= spawnInterval)
         {
-            if (!gm.Stop)
+            if (!GameManager.instance.Stop)
             {
                 SpawnPrefab();
             }
