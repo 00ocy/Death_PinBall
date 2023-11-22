@@ -111,6 +111,15 @@ public class Pepole : MonoBehaviour
                 animator.SetBool("run", true);
             }
         }
+        else
+        {
+            // death 상태에서 10초 후에 DeactivateObject 메서드를 호출하도록 예약
+            Invoke("DeactivateObject", 10f);
+        }
+    }
+    void DeactivateObject()
+    {
+        gameObject.SetActive(false);
     }
     private void OnCollisionEnter(Collision collision)
     {

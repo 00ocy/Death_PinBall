@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Title_Run : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // 이동 속도를 조절하는 변수
+    public float moveSpeed = 5f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // 오브젝트를 y축으로 이동
+        MoveObject();
+    }
+
+    void MoveObject()
+    {
+        // 현재 위치를 저장
+        Vector3 currentPosition = transform.position;
+
+        // y축 방향으로 이동
+        currentPosition.x += moveSpeed * Time.deltaTime;
+
+        // 새로운 위치를 적용
+        transform.position = currentPosition;
     }
 }
