@@ -324,7 +324,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  gm: {fileID: 0}
   Scream_Source: {fileID: 0}
   range: 11
   sightRange: 10

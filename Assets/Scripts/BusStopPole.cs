@@ -27,7 +27,6 @@ public class BusStopPole : MonoBehaviour
             meshRenderer.enabled = false;
             meshCollider.enabled = false;
 
-            gm.score += 150;
             // 모든 "pole"이 비활성화 상태인지 체크
             if (AllPolesInactive())
             {
