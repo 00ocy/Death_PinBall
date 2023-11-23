@@ -12,14 +12,7 @@ public enum GameState
     End
 }
 public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
-    private void Awake()
-    {
-        if (GameManager.instance == null) GameManager.instance = this;
-
-    }
-
+{ 
     public GameState gs;
 
     public TextMeshPro space;

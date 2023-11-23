@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class score : MonoBehaviour
 {
-    int obj;
-
+    // Start is called before the first frame update
+    public GameManager gm;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            obj = collision.gameObject.layer;
-            switch(obj)
-            {
-                case 10:
-                        GameManager.instance.score += 100;;
-                        break;
-                case 11:
-                        GameManager.instance.score += 50;
-                        break;
-                default: break;
-            }
+            gm.score += 50;
         }
+    }
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

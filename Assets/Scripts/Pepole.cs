@@ -10,6 +10,8 @@ public class Pepole : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] LayerMask groundLayer, playerLayer;
     
+    public GameManager gm;
+
     public AudioSource Scream_Source;
     
     //patrol
@@ -47,6 +49,7 @@ public class Pepole : MonoBehaviour
         lastPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        gm = GameObject.Find("GM").GetComponent<GameManager>();
         Scream_Source = GetComponent<AudioSource>();
     }
 
@@ -128,6 +131,7 @@ public class Pepole : MonoBehaviour
             death = true;
             gameObject.layer = LayerMask.NameToLayer("Player");
             GetComponent<Collider>().isTrigger = true;
+            gm.score += 100;
         }
 
     }
