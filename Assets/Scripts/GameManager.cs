@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEditor.Progress;
+
 public enum GameState
 {
     Ready,
@@ -14,6 +16,8 @@ public enum GameState
 public class GameManager : MonoBehaviour
 { 
     public GameState gs;
+
+    private bool isPaused = false;
 
     public TextMeshPro space;
     public GameObject Ball;
@@ -35,19 +39,20 @@ public class GameManager : MonoBehaviour
     public int score;
     public Text scoreText;
 
-    public int life;
+    public int life = 3;
     public Text lifeText;
 
  
     void Start()
     {
-
-        scoreText.text = "0";
-        lifeText.text = "LIFE : 3";
-        Stop = true;
-        score = 0;
-        life = 3;
-        
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            scoreText.text = "0";
+            lifeText.text = "LIFE : 3";
+            Stop = true;
+            score = 0;
+            life = 3;
+        }
     }
     void GameOver()
     {
@@ -55,8 +60,6 @@ public class GameManager : MonoBehaviour
         {
             gameIsOver = true;
             gs = GameState.End;
-            // 캐릭터 생성 멈추기 추가
-            // 플립퍼 동작 멈추기 추가
 
             iTween.FadeTo(black, iTween.Hash("alpha", 180, "delay", 0.1f, "time", 0.5f));
             iTween.MoveTo(finalWindow, iTween.Hash("y", 0, "delay", 0.5f, "time", 1f));
@@ -71,6 +74,40 @@ public class GameManager : MonoBehaviour
             highScoreText.text = PlayerPrefs.GetInt("hs").ToString();
         }
     }
+   
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex !=0)
+        {
+
+            scoreText.text = ""+score.ToString();
+            lifeText.text = "LIFE : "+life.ToString();
+        
+            //게임오버 다시하기 버튼으로 빼기 나중에
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Pause();
+            }
+      
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Stop = false;
+                space.gameObject.SetActive(false);
+                Ball.GetComponent<Rigidbody>().isKinematic = false;
+            }
+
+            if (Stop&&life!=0)
+            {
+                space.gameObject.SetActive(true);
+            }
+
+            if (life==0)
+            {
+                GameOver();
+            }
+                scoreText.text = score.ToString();
+        }
+    }
     public void Click_Home()
     {
         SceneManager.LoadScene(0);
@@ -80,46 +117,70 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    void Update()
+    public void Option()
     {
-        scoreText.text = ""+score.ToString();
-        lifeText.text = "LIFE : "+life.ToString();
-        
-        //게임오버 다시하기 버튼으로 빼기 나중에
-        if (Input.GetKeyDown(KeyCode.R))
+        // Canvas 찾기
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            SceneManager.LoadScene(2);
-        }
+            GameObject canvasObject = GameObject.Find("Canvas");
+            // Canvas 하위에서 "Option"이라는 이름의 UI를 찾아서 활성화
+            Transform optionTransform = canvasObject.transform.Find("Option");
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Stop = false;
-            space.gameObject.SetActive(false);
-            Ball.GetComponent<Rigidbody>().isKinematic = false;
-        }
-
-        if (Stop&&life!=0)
-        {
-            space.gameObject.SetActive(true);
-            
-            //깜빡깜빡
-            //iTween.FadeTo(space.gameObject, iTween.Hash("alpha", 0f, "time", 1f, "easetype", iTween.EaseType.easeInOutQuad));
-            //iTween.FadeTo(space.gameObject, iTween.Hash("alpha", 1f, "time", 1f, "easetype", iTween.EaseType.easeInOutQuad));
-
-        }
-        //if (gs == GameState.Play)
-        //{
-
-        if (life==0)
+            if(optionTransform.gameObject.activeSelf)
             {
-              
-                GameOver();
+                optionTransform.gameObject.SetActive(false);
             }
+            else
+            {
+                optionTransform.gameObject.SetActive(true);
+            }
+        }
 
-            scoreText.text = score.ToString();
-        //}
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            GameObject canvasObject = GameObject.Find("PauseCanvas");
+            // Canvas 하위에서 "Option"이라는 이름의 UI를 찾아서 활성화
+            Transform optionTransform = canvasObject.transform.Find("Option");
+
+            if (optionTransform.gameObject.activeSelf)
+            {
+                optionTransform.gameObject.SetActive(false);
+            }
+            else
+            {
+                optionTransform.gameObject.SetActive(true);
+            }
+        }
     }
 
+    public void Pause()
+    {
+        isPaused = !isPaused;
+
+        // Time.timeScale을 사용하여 게임 일시 중지/재개
+        Time.timeScale = isPaused ? 0f : 1f;
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            GameObject canvasObject = GameObject.Find("Canvas");
+
+            Transform optionTransform = canvasObject.transform.Find("PauseCanvas");
+
+            if (optionTransform.gameObject.activeSelf)
+            {
+                optionTransform.gameObject.SetActive(false);
+            }
+            else
+            {
+                optionTransform.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void EXIT()
+    {
+        Application.Quit();
+    }
 
 }
 

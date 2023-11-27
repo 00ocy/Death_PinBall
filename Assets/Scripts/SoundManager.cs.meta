@@ -4,10 +4,13 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - BG_Source: {instanceID: 0}
+  - BG_Music: {fileID: 8300000, guid: 1cb42b8f1d96434498de9a336656d7cf, type: 3}
   - lamp: {fileID: 8300000, guid: 584d1245257d9e44a9f4fe7cdf5ae7c2, type: 3}
   - metal: {fileID: 8300000, guid: 99eaf87c1c130204b9fa5d7fd762266d, type: 3}
   - bbang: {fileID: 8300000, guid: 913d5440bfff1bb409606d31d5724340, type: 3}
-  - personHit: {fileID: 8300000, guid: 4636386071d83474187d178b39daa8fa, type: 3}
+  - fHit: {fileID: 8300000, guid: 693d737af05e59a46a27d089d8d7b69e, type: 3}
+  - mHit: {fileID: 8300000, guid: 2b25d2d0f624b204f8a49f616c145003, type: 3}
   - parking: {fileID: 8300000, guid: a12c731200297184ba6e3f7bf4e7fc44, type: 3}
   - trash: {fileID: 8300000, guid: cf56e77e6fced5047bb62bf3bf036f2b, type: 3}
   - siren: {fileID: 8300000, guid: 1ea8d5dd85eb2f04fa265f6d2145dfe5, type: 3}

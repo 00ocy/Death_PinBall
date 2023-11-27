@@ -70,9 +70,14 @@ public class Ball : MonoBehaviour
             Carsound(SoundManager.instance.bbang);
             gm.score += 50;
         }
-        else if (collision.gameObject.CompareTag("f") || collision.gameObject.CompareTag("m"))
+        else if (collision.gameObject.CompareTag("f"))
         {
-            person(SoundManager.instance.personHit);
+            person(SoundManager.instance.fHit);
+            gm.score += 100;
+        }
+        else if (collision.gameObject.CompareTag("m"))
+        {
+            person(SoundManager.instance.mHit);
             gm.score += 100;
         }
         else if (collision.gameObject.CompareTag("parking") || collision.gameObject.CompareTag("h"))

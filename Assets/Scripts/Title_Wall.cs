@@ -15,10 +15,10 @@ public class TitleWall : MonoBehaviour
     {
         switch (n)
         {
-            case 0: wallSound(SoundManager.instance.lamp); break;
+            case 0: wallSound(SoundManager.instance.metal); break;
             case 1: wallSound(SoundManager.instance.metal); break;
             case 2: wallSound(SoundManager.instance.bbang); break;
-            case 3: wallSound(SoundManager.instance.personHit); break;
+            case 3: wallSound(SoundManager.instance.siren); break;
             case 4: wallSound(SoundManager.instance.parking); break;
             case 5: wallSound(SoundManager.instance.trash); break;
             case 6: wallSound(SoundManager.instance.siren); break;
